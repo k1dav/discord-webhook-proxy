@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
 # 複製專案檔案
-COPY pyproject.toml uv.lock* ./
+COPY pyproject.toml uv.lock* README.md ./
 
 # 使用 uv sync 建立虛擬環境
 RUN uv sync --frozen
