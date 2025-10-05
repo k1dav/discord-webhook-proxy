@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rg:*)",
+      "Bash(mkdir:*)",
+      "Bash(rm:*)",
+      "Bash(find:*)",
+      "Bash(uv add:*)",
+      "Bash(uv run streamlit run:*)",
+      "Bash(python:*)",
+      "Bash(cat:*)",
+      "Bash(python3:*)",
+      "Bash(ps:*)",
+      "Bash(kill:*)"
+    ],
+    "deny": []
+  }
+}

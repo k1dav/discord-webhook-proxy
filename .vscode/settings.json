@@ -1,0 +1,52 @@
+{
+  // Python 设置
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+
+  // 编辑器设置
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "ms-python.black-formatter",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+
+  // Python 特定的格式化
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
+  },
+
+  // Black 格式化器设置
+  "black-formatter.args": [
+    "--line-length=88"
+  ],
+
+  // Ruff 设置
+  "ruff.lint.enable": true,
+  "ruff.format.args": [
+    "--line-length=88"
+  ],
+
+  // Basedpyright 设置 - 忽略 Discord.py 事件处理器的误报
+  "basedpyright.analysis.diagnosticSeverityOverrides": {
+    "reportUnusedFunction": "none"
+  },
+
+  // 文件排除
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    "**/.pytest_cache": true,
+    "**/.ruff_cache": true,
+    "**/*.egg-info": true
+  },
+
+  // 文件监控排除
+  "files.watcherExclude": {
+    "**/.venv/**": true,
+    "**/discord_proxy.db": true,
+    "**/discord_listener.log": true
+  }
+}

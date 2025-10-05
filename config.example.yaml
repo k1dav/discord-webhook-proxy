@@ -1,0 +1,64 @@
+# Discord Webhook Proxy 配置示例
+# 複製此文件為 config.yaml 並填入你的設定
+
+# Discord Bot 設定
+bot:
+  # Discord Bot Token（從 https://discord.com/developers/applications 獲取）
+  token: "YOUR_DISCORD_BOT_TOKEN_HERE"
+  # 是否啟用 Bot
+  enabled: true
+
+# Webhook 轉發規則
+webhook_rules:
+  # 範例 1: 轉發所有訊息到指定 Webhook
+  - name: "全部訊息轉發"
+    webhook_url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN"
+    enabled: true
+    # event_type: null 表示接收所有事件類型
+    # 可用的事件類型: message, member_join, member_remove, reaction_add, channel_create, channel_delete
+    event_type: null
+    # scope_type: null 表示接收所有範圍
+    # 可用的範圍類型: guild, channel
+    scope_type: null
+    scope_id: null
+
+  # 範例 2: 只轉發特定頻道的訊息
+  - name: "特定頻道訊息"
+    webhook_url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN"
+    enabled: true
+    # 只轉發 message 事件
+    event_type: "message"
+    # 只轉發來自特定頻道的事件
+    scope_type: "channel"
+    # 填入你的頻道 ID
+    scope_id: "1234567890"
+
+  # 範例 3: 轉發多種事件類型
+  - name: "成員變動通知"
+    webhook_url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN"
+    enabled: true
+    # 轉發成員加入和離開事件
+    event_type:
+      - "member_join"
+      - "member_remove"
+    scope_type: null
+    scope_id: null
+
+  # 範例 4: 特定伺服器的所有事件
+  - name: "伺服器監控"
+    webhook_url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN"
+    enabled: true
+    event_type: null
+    # 只轉發來自特定伺服器的事件
+    scope_type: "guild"
+    # 填入你的伺服器 ID
+    scope_id: "9876543210"
+
+  # 範例 5: 停用的規則
+  - name: "測試規則（已停用）"
+    webhook_url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN"
+    # enabled: false 表示此規則不會執行
+    enabled: false
+    event_type: null
+    scope_type: null
+    scope_id: null
